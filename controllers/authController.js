@@ -31,10 +31,11 @@ const login = async (req, res) => {
         firstName: oldUser.firstName,
         lastName: oldUser.lastName,
         phoneNumber: oldUser.phoneNumber,
+        gender:oldUser.gender,
       });
     }
 
-    //create new user
+    //create new usergender:oldUser.gender,
     if (!oldUser && otp === "1234") {
       const user = await new User({
         phoneNumber,
@@ -50,6 +51,7 @@ const login = async (req, res) => {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         phoneNumber: newUser.phoneNumber,
+        gender:newUser.gender,
       });
     }
   } catch (error) {
