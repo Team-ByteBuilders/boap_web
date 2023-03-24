@@ -18,13 +18,12 @@ const UserSchema = new mongoose.Schema(
       min: [4, "email should contain at least 4 characters!"],
       trim: true,
     },
-    gender:{
-      type:String,
-      max:10,
-      default:"",
-      min:[4],
-
-},
+    gender: {
+      type: String,
+      max: 10,
+      default: "",
+      min: [4],
+    },
     phoneNumber: {
       type: String,
       required: true,
@@ -49,6 +48,15 @@ const UserSchema = new mongoose.Schema(
       default: [],
     },
     following: {
+      type: Array,
+      default: [],
+    },
+    balance: {
+      type: Number,
+      default: 5000,
+      required: true,
+    },
+    pendingSettlements: {
       type: Array,
       default: [],
     },

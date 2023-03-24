@@ -35,7 +35,7 @@ const login = async (req, res) => {
     }
 
     //create new user
-    if (!oldUser && otp === 1234) {
+    if (!oldUser && otp === "1234") {
       const user = await new User({
         phoneNumber,
         userUpi: `${phoneNumber}@boap`,

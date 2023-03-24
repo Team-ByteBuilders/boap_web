@@ -103,3 +103,17 @@ module.exports = {
   getAllUsers,
   getFollowing,
 };
+
+// a ={
+//   paymentID: "asdf",
+//   from: "asdf",
+//   to: "asdfhkjh",
+//   isGroup: "falst",
+//   myAmount: "asdf",
+//   totalAmount: "asdf",
+//   participants: [{
+//     id: "",
+//     amount: ""
+//   }],
+
+// }
