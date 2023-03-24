@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema(
     userUpi: {
       type: String,
       require: true,
-      min: [3, "username should contain at least three characters!"],
+      min: [3, "upi should contain at least three characters!"],
       max: 20,
       unique: true,
       trim: true,
@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       // required: true,
       max: 50,
+      default: "",
       min: [4, "email should contain at least 4 characters!"],
       trim: true,
     },
@@ -26,10 +27,12 @@ const UserSchema = new mongoose.Schema(
     },
     firstName: {
       type: String,
+      default: "",
       // required: true,
       trim: true,
     },
     lastName: {
+      default: "",
       type: String,
       // required: true,
       trim: true,
