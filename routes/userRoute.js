@@ -11,7 +11,7 @@ const {
 } = require("../controllers/userController");
 
 router.put("/updateuser", authenticateToken, updateUser);
-router.get("/nearbyshop", authenticateToken, getNearByShop);
+router.post("/nearbyshop", authenticateToken, getNearByShop);
 router.put("/:id/follow", followUser);
 router.get("/getbalance", authenticateToken, getBalance);
 router.put("/:id/unfollow", unfollowUser);
