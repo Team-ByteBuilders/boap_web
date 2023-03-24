@@ -60,6 +60,10 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    paymentHistory:{
+      type:String,
+      default:[]
+    }
   },
   { timestamps: true }
 );
