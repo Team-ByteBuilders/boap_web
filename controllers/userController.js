@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const Post = require("../models/postModel");
+// const Post = require("../models/postModel");
 
 //update a user
 const updateUser = async (req, res) => {
@@ -43,20 +43,20 @@ const deleteUser = async (req, res) => {
 
 //get a user
 const getUser = async (req, res) => {
-	try {
-		const user = await User.findOne({
-			username: req.params.id,
-		});
-		const userPosts = await Post.find({ userId: user._id });
-		const { password, updatedAt, isAdmin, createdAt, email, ...other } =
-			user._doc;
-		res.status(200).json({
-			user: other,
-			userPosts: userPosts,
-		});
-	} catch (error) {
-		res.status(500).json(error);
-	}
+	// try {
+	// 	const user = await User.findOne({
+	// 		username: req.params.id,
+	// 	});
+	// 	const userPosts = await Post.find({ userId: user._id });
+	// 	const { password, updatedAt, isAdmin, createdAt, email, ...other } =
+	// 		user._doc;
+	// 	res.status(200).json({
+	// 		user: other,
+	// 		userPosts: userPosts,
+	// 	});
+	// } catch (error) {
+	// 	res.status(500).json(error);
+	// }
 };
 
 //follow a user
