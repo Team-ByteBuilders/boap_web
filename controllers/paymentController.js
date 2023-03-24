@@ -107,7 +107,23 @@ const paymentReminder = async (req, res) => {
     });
   }
 }
+
+// const getBalance = async (req, res) => {
+//   try {
+//     const user = await User.findById(req.userId);
+//     return res.status(200).json({
+//       balance: user.balance,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       message: "internal server error occured :)",
+//       error: error.message,
+//     });
+//   }
+// };
+
 module.exports = {
   sendPayment,
-  paymentReminder
+  paymentReminder,
+  // getBalance
 };
