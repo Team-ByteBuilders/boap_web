@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { sendPayment, paymentReminder } = require("../controllers/paymentController");
+const { sendPayment, paymentReminder} = require("../controllers/paymentController");
 const authenticateToken = require("../middleware/authenticateToken");
 
 router.post("/sendpayment", authenticateToken, sendPayment);

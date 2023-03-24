@@ -7,12 +7,13 @@ const {
 	getAllUsers,
 	getFollowing,
 	getNearByShop,
-	
+	getBalance
 } = require("../controllers/userController");
 
 router.put("/updateuser", authenticateToken, updateUser);
 router.get("/nearbyshop", authenticateToken, getNearByShop);
 router.put("/:id/follow", followUser);
+router.get("/getbalance", authenticateToken, getBalance);
 router.put("/:id/unfollow", unfollowUser);
 router.get("/:id/following", getFollowing);
 router.get("/", getAllUsers);
