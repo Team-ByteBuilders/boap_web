@@ -78,6 +78,22 @@ const unfollowUser = async (req, res) => {
   }
 };
 
+//get balance and payment history
+const getBalance = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    return res.status(200).json({
+      balance: user.balance,
+      paymentHistory: user.paymentHistory.slice(user.paymentHistory.length - 5, user.paymentHistory.length)
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "internal server error occured :)",
+      error: error.message,
+    });
+  }
+};
+
 //get all users
 const getAllUsers = async (req, res) => {
   try {
@@ -137,7 +153,7 @@ const getNearByShop= async (req, res) => {
         shop.lon
       );
       if (distance < 0.01){
-        return shop.shopUpi;
+        return shop;
       }
     });
 
@@ -156,7 +172,8 @@ module.exports = {
   getAllUsers,
   getFollowing,
   getNearByShop,
-  getUser,
+  getBalance,
+  getUser
 };
 
 // a ={

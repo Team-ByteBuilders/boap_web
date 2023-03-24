@@ -32,6 +32,7 @@ const login = async (req, res) => {
         lastName: oldUser.lastName,
         phoneNumber: oldUser.phoneNumber,
         gender:oldUser.gender,
+        balance:oldUser.balance,
       });
     }
 
@@ -52,6 +53,7 @@ const login = async (req, res) => {
         lastName: newUser.lastName,
         phoneNumber: newUser.phoneNumber,
         gender:newUser.gender,
+        balance:newUser.balance,
       });
     }
   } catch (error) {
