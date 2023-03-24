@@ -6,14 +6,14 @@ require("dotenv").config();
 const login = async (req, res) => {
   try {
     const { phoneNumber } = req.body;
-    if (phoneNumber.length != 10) {
-      return res.status(400).json({ message: "invalid phone number :)" });
-    }
 
     if (!phoneNumber) {
       {
         return res.status(400).json({ message: "incomplete data recieved :)" });
       }
+    }
+    if (phoneNumber.length != 10) {
+      return res.status(400).json({ message: "invalid phone number :)" });
     }
     const oldUser = await User.findOne({ phoneNumber });
     if (oldUser) {
