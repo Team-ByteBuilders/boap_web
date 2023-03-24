@@ -25,6 +25,16 @@ const updateUser = async (req, res) => {
     return res.status(500).json(error);
   }
 };
+// to get user details
+const getUser = async (req, res)=>{
+  try{
+    console.log(req.userId);
+    const user = await User.findById(req.userId);
+    res.status(200).json(user);
+  }catch(err){
+    res.status(500).json({"message": "internal server error :)"})
+  }
+}
 
 //follow a user
 const followUser = async (req, res) => {
@@ -146,6 +156,7 @@ module.exports = {
   getAllUsers,
   getFollowing,
   getNearByShop,
+  getUser,
 };
 
 // a ={
