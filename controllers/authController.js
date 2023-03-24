@@ -15,10 +15,9 @@ const login = async (req, res) => {
     if (phoneNumber.length != 10) {
       return res.status(400).json({ message: "invalid phone number :)" });
     }
-    if(otp !== "1234"){
+    if (otp !== "1234") {
       return res.status(400).json({ message: "invalid otp :)" });
     }
-
     const oldUser = await User.findOne({ phoneNumber });
     if (oldUser) {
       return res.status(200).json({
@@ -31,11 +30,12 @@ const login = async (req, res) => {
         email: oldUser.email,
         firstName: oldUser.firstName,
         lastName: oldUser.lastName,
+        phoneNumber: oldUser.phoneNumber,
       });
     }
 
     //create new user
-    if (!oldUser && otp == 1234) {
+    if (!oldUser && otp === "1234") {
       const user = await new User({
         phoneNumber,
         userUpi: `${phoneNumber}@boap`,
@@ -49,6 +49,7 @@ const login = async (req, res) => {
         email: newUser.email,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
+        phoneNumber: newUser.phoneNumber,
       });
     }
   } catch (error) {
