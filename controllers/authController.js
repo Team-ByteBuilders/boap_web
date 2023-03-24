@@ -27,6 +27,7 @@ const login = async (req, res) => {
         email: oldUser.email,
         firstName: oldUser.firstName,
         lastName: oldUser.lastName,
+        phoneNumber: oldUser.phoneNumber,
       });
     }
 
@@ -45,6 +46,7 @@ const login = async (req, res) => {
         email: newUser.email,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
+        phoneNumber: newUser.phoneNumber,
       });
     }
   } catch (error) {
