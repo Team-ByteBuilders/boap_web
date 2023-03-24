@@ -56,6 +56,10 @@ const UserSchema = new mongoose.Schema(
       default: 5000,
       required: true,
     },
+    paymentHistory: {
+      type: Array,
+      default: [],
+    },
     pendingSettlements: {
       type: Array,
       default: [],

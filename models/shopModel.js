@@ -26,4 +26,4 @@ const ShopSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Shop", UserSchema);
+module.exports = mongoose.model("Shop", ShopSchema);

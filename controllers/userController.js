@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Shop = require("../models/shopModel");
 const jwt = require("jsonwebtoken");
 // const Post = require("../models/postModel");
 
@@ -122,8 +123,8 @@ const getNearByShop= async (req, res) => {
       const distance = getDistanceFromLatLonInKm(
         lat,
         lon,
-        shop.location.lat,
-        shop.location.lon
+        shop.lat,
+        shop.lon
       );
       if (distance < 0.01){
         return shop.shopUpi;
