@@ -4,28 +4,29 @@ const jwt = require("jsonwebtoken");
 
 //update a user
 const updateUser = async (req, res) => {
-	if (req.userId === req.params.id) {
-	try {
-		const user = await User.findByIdAndUpdate(req.params.id, {
-			$set: req.body,
-		});
-		const newUser = await User.findById(user._id);
-		return res.status(200).json({
-      token: jwt.sign(oldUser._id.toString(), process.env.ACCESS_TOKEN_SECRET),
-      userID: newUser._id.toString(),
-      userUpi: newUser.userUpi,
-      email: newUser.email,
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-    });
-	} catch (error) {
-		console.log(error);
-		return res.status(500).json(error);
-	}
-}
- else {
-return res.status(403).json("access denied");
-}
+	
+    try {
+      const user = await User.findByIdAndUpdate(req.userId, {
+        $set: req.body,
+      });
+      const newUser = await User.findById(user._id);
+      return res.status(200).json({
+        token: jwt.sign(
+          newUser._id.toString(),
+          process.env.ACCESS_TOKEN_SECRET
+        ),
+        userID: newUser._id.toString(),
+        userUpi: newUser.userUpi,
+        email: newUser.email,
+        gender: newUser.gender,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
+    }
+  
 };
 
 
