@@ -12,8 +12,8 @@ const updateUser = async (req, res) => {
       const newUser = await User.findById(user._id);
       return res.status(200).json({
         token: jwt.sign(
-          newUser._id.toString(),
-          process.env.ACCESS_TOKEN_SECRET
+        newUser._id.toString(),
+        process.env.ACCESS_TOKEN_SECRET
         ),
         userID: newUser._id.toString(),
         userUpi: newUser.userUpi,
