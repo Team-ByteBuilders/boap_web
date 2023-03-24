@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    userName: {
+    userUpi: {
       type: String,
       require: true,
       min: [3, "username should contain at least three characters!"],
@@ -10,19 +10,14 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-    password: {
-      type: String,
-      require: true,
-      min: [6, "password should contain at least six characters!"],
-    },
     email: {
       type: String,
-      required: true,
+      // required: true,
       max: 50,
       min: [4, "email should contain at least 4 characters!"],
       trim: true,
     },
-    phone: {
+    phoneNumber: {
       type: String,
       required: true,
       max: 10,
@@ -31,18 +26,13 @@ const UserSchema = new mongoose.Schema(
     },
     firstName: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     lastName: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-    },
-    profilePictureUrl: {
-      type: String,
-      default:
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
     },
     followers: {
       type: Array,
