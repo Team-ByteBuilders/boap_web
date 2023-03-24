@@ -6,7 +6,7 @@ require("dotenv").config();
 const login = async (req, res) => {
   try {
     const { phoneNumber } = req.body;
-    if (phoneNumber.length < 10) {
+    if (phoneNumber.length != 10) {
       return res.status(400).json({ message: "invalid phone number :)" });
     }
 
