@@ -5,7 +5,7 @@ require("dotenv").config();
 //Register and login
 const login = async (req, res) => {
   try {
-    const { phoneNumber } = req.body;
+    const { phoneNumber,otp } = req.body;
 
     if (!phoneNumber || !otp) {
       {
