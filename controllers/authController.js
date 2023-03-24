@@ -7,13 +7,16 @@ const login = async (req, res) => {
   try {
     const { phoneNumber } = req.body;
 
-    if (!phoneNumber) {
+    if (!phoneNumber || !otp) {
       {
         return res.status(400).json({ message: "incomplete data recieved :)" });
       }
     }
     if (phoneNumber.length != 10) {
       return res.status(400).json({ message: "invalid phone number :)" });
+    }
+    if (otp !== "1234") {
+      return res.status(400).json({ message: "invalid otp :)" });
     }
     const oldUser = await User.findOne({ phoneNumber });
     if (oldUser) {
@@ -32,7 +35,7 @@ const login = async (req, res) => {
     }
 
     //create new user
-    if (!oldUser) {
+    if (!oldUser && otp === 1234) {
       const user = await new User({
         phoneNumber,
         userUpi: `${phoneNumber}@boap`,
