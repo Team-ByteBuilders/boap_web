@@ -127,7 +127,7 @@ const getNearByShop= async (req, res) => {
         shop.lon
       );
       if (distance < 0.01){
-        return shop.shopUpi;
+        return shop;
       }
     });
 
