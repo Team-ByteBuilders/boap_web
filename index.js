@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
+const paymentRoute=require("./routes/paymentRoute");
 const cors = require("cors");
 
 require("dotenv").config();
@@ -49,6 +50,7 @@ app.use(cors("http://localhost:3000"));
 //routes
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
+app.use("/payment", paymentRoute);
 
 app.listen(PORT, () => {
   console.log(`server listening on ${PORT}`);

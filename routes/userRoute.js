@@ -6,10 +6,12 @@ const {
 	unfollowUser,
 	getAllUsers,
 	getFollowing,
+	getNearByShop,
 	
 } = require("../controllers/userController");
 
 router.put("/updateuser", authenticateToken, updateUser);
+router.post("/nearbyshop", authenticateToken, getNearByShop);
 router.put("/:id/follow", followUser);
 router.put("/:id/unfollow", unfollowUser);
 router.get("/:id/following", getFollowing);

@@ -35,5 +35,5 @@ const sendPayment = async (req, res) => {
 };
 
 module.exports = {
-  login,
+  sendPayment,
 };
