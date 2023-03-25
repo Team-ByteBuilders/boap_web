@@ -82,13 +82,19 @@ const unfollowUser = async (req, res) => {
 const getBalance = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
+    const revArray=user.paymentHistory.reverse();
+    if(revArray.length>5){
     return res.status(200).json({
       balance: user.balance,
-      paymentHistory: user.paymentHistory.slice(
-        user.paymentHistory.length - 5,
-        user.paymentHistory.length
-      ),
+      paymentHistory: user.revArray.slice(0,5),
     });
+  }
+  else{
+    return res.status(200).json({
+      balance: user.balance,
+      paymentHistory: user.paymentHistory,
+    });
+  }
   } catch (error) {
     res.status(500).json({
       message: "internal server error occured :)",
@@ -192,13 +198,4 @@ module.exports = {
   getUser,
 };
 
-[
-  { name: "maggi", price: 5 },
-  { name: "stickers", price: 20 },
-  { name: "notebook", price: 40 },
-  { name: "candy", price: 10 },
-];
-[
-  { name: "maggi", price: 5 },
-  { name: "notebook", price: 40 },
-];
+
