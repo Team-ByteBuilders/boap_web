@@ -86,7 +86,7 @@ const getBalance = async (req, res) => {
     if(revArray.length>5){
     return res.status(200).json({
       balance: user.balance,
-      paymentHistory: user.revArray.slice(0,5),
+      paymentHistory: revArray.slice(0,5),
     });
   }
   else{
