@@ -28,7 +28,7 @@ const sendPayment = async (req, res) => {
           paymentHistory: {
             from: user.userUpi,
             to: upiId,
-            amount: amount,
+            amount: amount-2*amount,
           },
         },
       },
@@ -39,6 +39,13 @@ const sendPayment = async (req, res) => {
       {
         $set: {
           balance: user2.balance + amount,
+        },
+        $push: {
+          paymentHistory: {
+            from: user.userUpi,
+            to: upiId,
+            amount: amount,
+          },
         },
       },
       { new: true }
