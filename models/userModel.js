@@ -40,7 +40,6 @@ const UserSchema = new mongoose.Schema(
     lastName: {
       default: "",
       type: String,
-      // required: true,
       trim: true,
     },
     followers: {

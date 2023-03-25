@@ -18,5 +18,5 @@ router.get("/getbalance", authenticateToken, getBalance);
 router.put("/:id/unfollow", unfollowUser);
 router.get("/:id/following", getFollowing);
 router.get("/", getAllUsers);
-router.get("/getUser",authenticateToken, getUser);
+router.get("/getuser",authenticateToken, getUser);
 module.exports = router;
