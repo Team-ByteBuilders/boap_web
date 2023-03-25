@@ -18,6 +18,7 @@ const sendPayment = async (req, res) => {
     if (user.balance - amount < 0) {
       return res.status(400).json({ message: "insufficient balance :)" });
     }
+    const a = new Date();
     const sUser = await User.findOneAndUpdate(
       { _id: req.userId },
       {
@@ -28,7 +29,20 @@ const sendPayment = async (req, res) => {
           paymentHistory: {
             from: user.userUpi,
             to: upiId,
-            amount: amount-2*amount,
+            amount: amount - 2 * amount,
+            balance: user.balance - amount,
+            time:
+              a.getDay() +
+              "/" +
+              a.getMonth() +
+              "/" +
+              a.getFullYear() +
+              " @ " +
+              a.getHours() +
+              ":" +
+              a.getMinutes() +
+              ":" +
+              a.getSeconds(),
           },
         },
       },
