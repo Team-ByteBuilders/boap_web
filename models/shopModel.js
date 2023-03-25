@@ -21,7 +21,15 @@ const ShopSchema = new mongoose.Schema(
       max: 10,
       default: "",
       trim: true,
-    }
+    },
+    shopName: {
+      type: String,
+      require: true,
+      min: [3, "Name should contain at least three characters!"],
+      max: 20,
+      unique: true,
+      trim: true,
+    },
   },
 );
 
