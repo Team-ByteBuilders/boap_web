@@ -28,7 +28,7 @@ const sendPayment = async (req, res) => {
           paymentHistory: {
             from: user.userUpi,
             to: upiId,
-            amount: amount-2*amount,
+            amount: amount - 2 * amount,
           },
         },
       },
@@ -59,8 +59,7 @@ const sendPayment = async (req, res) => {
     //save user to database and return response
     const newPayment = await payment.save();
     return res.status(200).json({
-      newPayment,
-      sUser,
+      message: "Theek h bhai hogyi payment"
     });
   } catch (error) {
     res.status(500).json({
