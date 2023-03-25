@@ -26,15 +26,15 @@ const updateUser = async (req, res) => {
   }
 };
 // to get user details
-const getUser = async (req, res)=>{
-  try{
+const getUser = async (req, res) => {
+  try {
     console.log(req.userId);
     const user = await User.findById(req.userId);
     res.status(200).json(user);
-  }catch(err){
-    res.status(500).json({"message": "internal server error :)"})
+  } catch (err) {
+    res.status(500).json({ message: "internal server error :)" });
   }
-}
+};
 
 //follow a user
 const followUser = async (req, res) => {
@@ -84,7 +84,10 @@ const getBalance = async (req, res) => {
     const user = await User.findById(req.userId);
     return res.status(200).json({
       balance: user.balance,
-      paymentHistory: user.paymentHistory.slice(user.paymentHistory.length - 5, user.paymentHistory.length)
+      paymentHistory: user.paymentHistory.slice(
+        user.paymentHistory.length - 5,
+        user.paymentHistory.length
+      ),
     });
   } catch (error) {
     res.status(500).json({
@@ -123,7 +126,7 @@ const getFollowing = async (req, res) => {
   }
 };
 
-const getNearByShop= async (req, res) => {
+const getNearByShop = async (req, res) => {
   let { lat, lon } = req.body;
   // lat=lat.slice(0, 5);
   // lon=lon.slice(0, 5);
@@ -134,9 +137,9 @@ const getNearByShop= async (req, res) => {
     var a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) *
-      Math.cos(deg2rad(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
     return d;
@@ -147,25 +150,36 @@ const getNearByShop= async (req, res) => {
   }
   try {
     const shops = await Shop.find();
+    console.log(shops);
     const nearbyShops = shops.filter((shop) => {
-      const distance = getDistanceFromLatLonInKm(
-        lat,
-        lon,
-        shop.lat,
-        shop.lon
-      );
-      if (distance < 1){
+      const distance = getDistanceFromLatLonInKm(lat, lon, shop.lat, shop.lon);
+      if (distance < 1) {
         return shop;
       }
     });
 
     res.status(200).json(nearbyShops);
-    
-  } catch (error) { 
+  } catch (error) {
     res.status(500).json(error);
     console.log(error);
   }
 };
+
+const createData = async(req, res)=>{
+  const shop = Shop.findByIdAndUpdate(
+    { shopName: "shop1" },
+    {
+      $set: {
+        topList: [
+          { name: "maggi", price: 5 },
+          { name: "notebook", price: 40 },
+        ],
+      },
+    },
+    { new: true }
+  );
+  res.status(200).json(shop)
+}
 
 module.exports = {
   updateUser,
@@ -175,19 +189,16 @@ module.exports = {
   getFollowing,
   getNearByShop,
   getBalance,
-  getUser
+  getUser,
 };
 
-// a ={
-//   paymentID: "asdf",
-//   from: "asdf",
-//   to: "asdfhkjh",
-//   isGroup: "falst",
-//   myAmount: "asdf",
-//   totalAmount: "asdf",
-//   participants: [{
-//     id: "",
-//     amount: ""
-//   }],
-
-// }
+[
+  { name: "maggi", price: 5 },
+  { name: "stickers", price: 20 },
+  { name: "notebook", price: 40 },
+  { name: "candy", price: 10 },
+];
+[
+  { name: "maggi", price: 5 },
+  { name: "notebook", price: 40 },
+];
