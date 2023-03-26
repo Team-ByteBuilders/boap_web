@@ -19,6 +19,7 @@ const updateUser = async (req, res) => {
       firstName: newUser.firstName,
       lastName: newUser.lastName,
       phoneNumber: newUser.phoneNumber,
+      balance: newUser.balance,
     });
   } catch (error) {
     console.log(error);
